@@ -8,7 +8,7 @@ public class BasePageTest extends TestRunner {
 
   private final String TEST_URL = "https://medium.com/better-practices/deploying-a-scalable-web-"
       + "application-with-docker-and-kubernetes-a5000a06c4e9";
-  private final String GITHUB_PAGE_TITLE = "\"GitHub - postmanlabs/node-doc-kube: "
+  private final String GITHUB_PAGE_TITLE = "GitHub - postmanlabs/node-doc-kube: "
       + "\uD83D\uDC31 URL shortener using cat verbs, cat adjectives, and cat emojis";
 
   @Test
@@ -43,7 +43,8 @@ public class BasePageTest extends TestRunner {
   public void verifyPossibilityOfCopyingUrlUsingCopyButton() {
     String url = loadApplication().typeUrlInUrlInputField(TEST_URL)
         .clickCattifyButton()
-        .activateCopyButton();
+        .clickCopyButton()
+        .getTextFromClipboard();
     Assert.assertTrue(url.length() > 0);
   }
 
@@ -51,7 +52,8 @@ public class BasePageTest extends TestRunner {
   public void verifyTransformedUrlIsWorking() {
     String url = loadApplication().typeUrlInUrlInputField(TEST_URL)
         .clickCattifyButton()
-        .activateCopyButton();
+        .clickCopyButton()
+        .getTextFromClipboard();
     String pageTitle = TabsManager.getPageTitleOpenedInANewTab(getDriver(), url);
     Assert.assertEquals(TEST_URL, pageTitle);
   }

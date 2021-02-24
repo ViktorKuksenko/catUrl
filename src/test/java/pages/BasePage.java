@@ -67,13 +67,18 @@ public class BasePage {
   public String getTransformedStringUrl() {
     return newUrlField.getAttribute("value");
   }
+
   //click on copy button to copy cattify url to clipboard
-  public String activateCopyButton() {
+  public BasePage clickCopyButton() {
     WaitWrapper.setZeroImplicitlyWait(driver);
     WaitWrapper.waitForPresenceOfElementLocated(driver, By
         .xpath("//div[@class='display-contents']//h3"));
     WaitWrapper.setDefaultImplicitlyWait(driver);
     copyButton.click();
+    return this;
+  }
+
+  public String getTextFromClipboard() {
     String copiedText = "";
     try {
       copiedText = (String) Toolkit.getDefaultToolkit().getSystemClipboard()
@@ -84,5 +89,4 @@ public class BasePage {
     }
     return copiedText;
   }
-
 }
