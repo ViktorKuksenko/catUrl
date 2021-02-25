@@ -4,8 +4,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <modelVersion>4.0.0</modelVersion>
 <properties>
-  <run.testng.xml>testng.xml</run.testng.xml>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <run.testng.xml></run.testng.xml>
   <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+  <maven.compiler.source>11.0.10</maven.compiler.source>
+  <maven.compiler.target>11.0.10</maven.compiler.target>
   <!-- - - - - - Reports - - - - - -->
   <testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
   <aspectj.version>1.9.6</aspectj.version>
@@ -55,8 +58,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <version>3.8.1</version>
         <inherited>true</inherited>
         <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
+          <release>11</release>
+          <source>11.0.10</source>
+          <target>11.0.10</target>
         </configuration>
       </plugin>
 
@@ -78,7 +82,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             </surefire.application.password>
           </systemPropertyVariables>
           <suiteXmlFiles>
-            <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+             <suiteXmlFile>testng.xml</suiteXmlFile>
             <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
             <suiteXmlFile>${run.testng.xml}</suiteXmlFile>
           </suiteXmlFiles>
