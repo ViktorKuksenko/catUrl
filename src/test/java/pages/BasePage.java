@@ -1,6 +1,7 @@
 package pages;
 
 import helpers.WaitWrapper;
+import io.qameta.allure.Step;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -40,21 +41,25 @@ public class BasePage {
     return driver.getTitle().equals("React App");
   }
 
+  @Step("Click on CatUrl Link")
   public BasePage clickCatUrlLink() {
     catUrlLink.click();
     return this;
   }
 
+  @Step("Click on Fork Me On GitHub Link")
   public GithubPage clickForkMeOnGitHubLink() {
     forkMeOnGitHubLink.click();
     return new GithubPage(driver);
   }
 
+  @Step("Type Url In Url Input Field")
   public BasePage typeUrlInUrlInputField(String url) {
     urlInputField.sendKeys(url);
     return this;
   }
 
+  @Step("Type Url In Url Input Field")
   public BasePage clickCattifyButton() {
     WaitWrapper.setZeroImplicitlyWait(driver);
     WaitWrapper.waitForPresenceOfElementLocated(driver, By.xpath("//input[@type='submit']"));
@@ -68,7 +73,7 @@ public class BasePage {
     return newUrlField.getAttribute("value");
   }
 
-  //click on copy button to copy cattify url to clipboard
+  @Step("Click on copy button to copy cattify url to clipboard")
   public BasePage clickCopyButton() {
     WaitWrapper.setZeroImplicitlyWait(driver);
     WaitWrapper.waitForPresenceOfElementLocated(driver, By
