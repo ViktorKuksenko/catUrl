@@ -10,6 +10,11 @@ pipeline {
           steps {
           echo "branch is ${GIT_BRANCH}"
            }
+           post {
+           success {
+           echo "success"
+           }
+           }
           }
   }
 }
