@@ -20,10 +20,10 @@ pipeline {
                     success {
                         echo "Build success"
                     }
-                    failure {
-                        echo "Build failure"
-                    }
-               }
+//                     failure {
+//                         echo "Build failure"
+//                     }
+                }
             }
          }
 
