@@ -2,9 +2,11 @@ pipeline {
   agent any
   environment {
       RELEASE = 0.0.1
-      LOG_LEVEL = INFO
   }
     stages {
+    environment {
+        LOG_LEVEL = INFO
+    }
          stage("build") {
             steps {
             echo 'building'
