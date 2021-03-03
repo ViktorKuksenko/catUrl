@@ -9,10 +9,8 @@ pipeline {
     stages {
     stage ('Initialize') {
                   steps {
-                      sh '''
-                          mvn -version
-                      '''
-                  }
+                      sh "mvn -version"
+              }
                   }
 
          stage("build") {
