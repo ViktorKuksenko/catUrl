@@ -4,7 +4,7 @@ pipeline {
       RELEASE = '0.0.1'
   }
   tools {
-          maven 'Maven 3.3.9'
+          maven 'Appache maven'
           jdk '11'
       }
 
