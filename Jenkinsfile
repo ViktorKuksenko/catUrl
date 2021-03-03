@@ -14,18 +14,19 @@ pipeline {
             }
             steps {
                 bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
+                 always {
+                                post {
+                                    success {
+                                        echo "Build success"
+                                    }
+                //                     failure {
+                //                         echo "Build failure"
+                //                     }
+                                }
+                            }
+                         }
             }
-            always {
-                post {
-                    success {
-                        echo "Build success"
-                    }
-//                     failure {
-//                         echo "Build failure"
-//                     }
-                }
-            }
-         }
+
 
           stage("deploy") {
               input {
@@ -39,4 +40,5 @@ pipeline {
                   echo "Deploying release ${RELEASE}"
               }
           }
+  }
 }
