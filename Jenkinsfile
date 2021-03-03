@@ -39,5 +39,4 @@ pipeline {
                   echo "Deploying release ${RELEASE}"
               }
           }
-  }
 }
