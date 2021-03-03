@@ -7,11 +7,11 @@ pipeline {
 
 
     stages {
-//     stage ('Initialize') {
-//                   steps {
-//                       sh "mvn -version"
-//               }
-//                   }
+    stage ('Initialize') {
+                  steps {
+                      bat "mvn -version"
+              }
+                  }
 
          stage("build") {
          environment {
