@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class TabsManager {
 
   public static String getPageTitleOpenedInANewTab(WebDriver driver, String url) {
+    openNewBrowserTab(driver);
     String secondBrowserTab = getBrowserTabs(driver).get(1);
     switchToWindow(driver, secondBrowserTab);
     WaitWrapper.setPageLoadTimeout(driver, 10);
@@ -19,8 +20,11 @@ public class TabsManager {
     driver.switchTo().window(window);
   }
 
-  public static List<String> getBrowserTabs(WebDriver driver) {
+  public static void openNewBrowserTab(WebDriver driver) {
     ((JavascriptExecutor) driver).executeScript("window.open()");
+  }
+
+  public static List<String> getBrowserTabs(WebDriver driver) {
     return new ArrayList<>(driver.getWindowHandles());
   }
 }

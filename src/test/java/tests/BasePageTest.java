@@ -48,14 +48,14 @@ public class BasePageTest extends TestRunner {
     Assert.assertTrue(url.length() > 0);
   }
 
-  @Test
-  public void verifyTransformedUrlIsWorking() {
-    String url = loadApplication().typeUrlInUrlInputField(TEST_URL)
-        .clickCattifyButton()
-        .clickCopyButton()
-        .getTextFromClipboard();
-    String pageTitle = TabsManager.getPageTitleOpenedInANewTab(getDriver(), url);
-    Assert.assertEquals(TEST_URL, pageTitle);
-  }
+//  @Test
+//  public void verifyTransformedUrlIsWorking() {
+//    String url = loadApplication().typeUrlInUrlInputField(TEST_URL)
+//        .clickCattifyButton()
+//        .clickCopyButton()
+//        .getTextFromClipboard();
+//    String pageTitle = TabsManager.getPageTitleOpenedInANewTab(getDriver(), url);
+//    Assert.assertEquals(TEST_URL, pageTitle);
+//  }
 
 }
