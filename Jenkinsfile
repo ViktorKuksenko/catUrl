@@ -10,9 +10,7 @@ pipeline {
     stage ('Initialize') {
                   steps {
                       bat "mvn -version"
-              }
-              steps {
-              bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
+                       bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
               }
                   }
 
