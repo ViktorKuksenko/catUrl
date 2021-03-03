@@ -3,19 +3,14 @@ pipeline {
   environment {
       RELEASE = '0.0.1'
   }
-  tools {
-           maven 'Maven 3.3.9'
-          jdk '9'
-      }
+
 
 
     stages {
     stage ('Initialize') {
                   steps {
                       sh '''
-                          bash
-                          echo "PATH = ${PATH}"
-                          echo "M2_HOME = ${M2_HOME}"
+                          mvn -version
                       '''
                   }
                   }
