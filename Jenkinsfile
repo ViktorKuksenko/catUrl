@@ -4,13 +4,10 @@ pipeline {
       RELEASE = '0.0.1'
   }
     stages {
-    environment {
-        LOG_LEVEL = 'INFO'
-    }
          stage("build") {
-            steps {
-            echo 'building'
-            }
+         environment {
+                 LOG_LEVEL = 'INFO'
+         }
             parallel {
                 stage("Linux arm-64") {
                     steps {
