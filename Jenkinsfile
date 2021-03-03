@@ -3,6 +3,7 @@ pipeline {
   environment {
       RELEASE = '0.0.1'
   }
+  stages {
          stage("INFO") {
              steps {
                 echo "branch is ${GIT_BRANCH}"
