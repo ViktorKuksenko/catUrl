@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  triggers {
+      cron('H */4 * * 1-5')
+  }
   environment {
       RELEASE = '0.0.1'
   }
@@ -46,18 +49,17 @@ pipeline {
                 }
             }
          }
-
-          stage("deploy") {
-              input {
-                  message 'Deploy to AWS?'
-                  ok 'deploy!!!'
-                  parameters {
-                      string(name: 'Target environment', defaultValue: 'PROD', description: 'Deploying to AWS')
-                  }
-              }
-              steps {
-                  echo "Deploying release ${RELEASE}"
-              }
-          }
-  }
+         stage("deploy") {
+            input {
+                message 'Deploy to AWS?'
+                    ok 'deploy!!!'
+                    parameters {
+                        string(name: 'Target environment', defaultValue: 'PROD', description: 'Deploying to AWS')
+                    }
+            }
+            steps {
+                echo "Deploying release ${RELEASE} to AWS"
+            }
+         }
+     }
 }
