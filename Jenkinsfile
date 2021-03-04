@@ -15,41 +15,37 @@ pipeline {
             environment {
                 LOG_LEVEL = 'INFO'
             }
-
             steps {
-            script {
-                if(env.GIT_BRANCH == 'origin/master') {
-                  bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
-                } else {
-
+                script {
+                    if(env.GIT_BRANCH == 'origin/master') {
+                      bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
+                    }
+                }
+                always {
+                    post {
+                        success {
+                            echo "Build success"
+                        }
+                        failure {
+                            echo "Build failure"
+                        }
+                    }
                 }
             }
-
-                always {
-                                post {
-                                    success {
-                                        echo "Build success"
-                                    }
-                //                     failure {
-                //                         echo "Build failure"
-                //                     }
-                                }
-                            }
-                         }
-            }
-            stage('reports') {
-                steps {
+         }
+         stage('reports') {
+            steps {
                 script {
-                        allure([
-                                includeProperties: false,
-                                jdk: '',
-                                properties: [],
-                                reportBuildPolicy: 'ALWAYS',
-                                results: [[path: 'target/allure-results']]
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
                         ])
                 }
-                }
             }
+         }
 
           stage("deploy") {
               input {
