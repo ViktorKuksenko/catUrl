@@ -7,15 +7,23 @@ pipeline {
          stage("INFO") {
              steps {
                 echo "branch is ${GIT_BRANCH}"
+                echo "Build number: ${BUILD_NUMBER}"
+                echo "Build ID: ${BUILD_ID}"
              }
          }
          stage("build") {
             environment {
                 LOG_LEVEL = 'INFO'
             }
+
             steps {
-                bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
-                 always {
+                if(env.GIT_BRANCH == 'master') {
+                    bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
+                } else {
+
+                }
+
+                always {
                                 post {
                                     success {
                                         echo "Build success"
