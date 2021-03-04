@@ -16,25 +16,27 @@ pipeline {
                 LOG_LEVEL = 'INFO'
             }
 
-            steps {
-                if(env.GIT_BRANCH == 'master') {
-                    bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
+  if(env.GIT_BRANCH == 'master') {
+                 steps {
+
+                                bat "mvn clean test -Drun.testng.xml=basePageTest.xml"
+                                always {
+                                                post {
+                                                    success {
+                                                        echo "Build success"
+                                                    }
+                                //                     failure {
+                                //                         echo "Build failure"
+                                //                     }
+                                                }
+                                            }
+                                         }
+                            }
                 } else {
 
                 }
 
-                always {
-                                post {
-                                    success {
-                                        echo "Build success"
-                                    }
-                //                     failure {
-                //                         echo "Build failure"
-                //                     }
-                                }
-                            }
-                         }
-            }
+
             stage('reports') {
                 steps {
                 script {
